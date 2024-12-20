@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Recommendation System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Drone Recommendation System</h1>
+        <form action="/recommend" method="post">
+            <div class="form-group">
+                <label for="port_name">Port Name:</label>
+                <select id="port_name" name="port_name" required>
+                    {% for port in unique_ports %}
+                    <option value="{{ port }}">{{ port }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="min_flight_radius">Minimum Flight Radius ({{ min_flight_radius_min }} - {{ min_flight_radius_max }} km):</label>
+                <input type="number" id="min_flight_radius" name="min_flight_radius" min="{{ min_flight_radius_min }}" max="{{ min_flight_radius_max }}" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="min_battery_life">Minimum Battery Life ({{ min_battery_life_min }} - {{ min_battery_life_max }} minutes):</label>
+                <input type="number" id="min_battery_life" name="min_battery_life" min="{{ min_battery_life_min }}" max="{{ min_battery_life_max }}" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="min_payload_capacity">Minimum Payload Capacity ({{ min_payload_capacity_min }} - {{ min_payload_capacity_max }} kg):</label>
+                <input type="number" id="min_payload_capacity" name="min_payload_capacity" min="{{ min_payload_capacity_min }}" max="{{ min_payload_capacity_max }}" step="0.01">
+            </div>
+            <div class="form-group">
+                <label for="min_camera_resolution">Minimum Camera Resolution ({{ min_camera_resolution_min }} - {{ min_camera_resolution_max }} MP):</label>
+                <input type="number" id="min_camera_resolution" name="min_camera_resolution" min="{{ min_camera_resolution_min }}" max="{{ min_camera_resolution_max }}" step="0.01">
+            </div>
+            <button type="submit">Get Recommendations</button>
+        </form>
+    </div>
+</body>
+</html>

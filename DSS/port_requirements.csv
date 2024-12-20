@@ -1,0 +1,21 @@
+port_name,surveillance_area,operational_hours,environmental_conditions,budget,security_threat_level,wildlife_interference,flight_path_restrictions,regulatory_requirements,historical_incident_data
+Port A,10,24,Moderate,10000,High,Moderate,None,Standard,None
+Port B,5,18,High,8000,Medium,High,Restricted,Strict,Moderate
+Port C,8,24,Low,12000,Low,Low,None,Lenient,Low
+Port D,6,20,High,9000,Medium,Moderate,Restricted,Standard,High
+Port E,12,22,Moderate,11000,High,Low,None,Strict,Moderate
+Port F,15,24,Moderate,13000,High,Moderate,None,Standard,None
+Port G,7,18,High,8500,Medium,High,Restricted,Strict,Moderate
+Port H,9,24,Low,11500,Low,Low,None,Lenient,Low
+Port I,6,20,High,9500,Medium,Moderate,Restricted,Standard,High
+Port J,11,22,Moderate,12500,High,Low,None,Strict,Moderate
+Port K,14,24,Moderate,14000,High,Moderate,None,Standard,None
+Port L,8,18,High,9000,Medium,High,Restricted,Strict,Moderate
+Port M,10,24,Low,12000,Low,Low,None,Lenient,Low
+Port N,7,20,High,9500,Medium,Moderate,Restricted,Standard,High
+Port O,11,22,Moderate,13500,High,Low,None,Strict,Moderate
+Port P,15,24,Moderate,15000,High,Moderate,None,Standard,None
+Port Q,8,18,High,10000,Medium,High,Restricted,Strict,Moderate
+Port R,12,24,Low,13000,Low,Low,None,Lenient,Low
+Port S,6,20,High,9500,Medium,Moderate,Restricted,Standard,High
+Port T,11,22,Moderate,14000,High,Low,None,Strict,Moderate

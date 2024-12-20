@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drone Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Drone Recommendations</h1>
+        {% if recommendations %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Drone Name</th>
+                        <th>Performance Score</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rec in recommendations %}
+                        <tr>
+                            <td>{{ rec.drone_name }}</td>
+                            <td>{{ rec.performance_score }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No recommendations found.</p>
+        {% endif %}
+        <a href="/">Go back</a>
+    </div>
+</body>
+</html>
