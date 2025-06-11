@@ -1,31 +1,35 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKER_IMAGE = 'python:3.10'
+    }
 
-   
-    
     stages {
-
-        stage('Check file') {
+        stage('Verify workspace contents') {
             steps {
                 sh 'ls -l $WORKSPACE'
-            }
-        }
-        stage('Pull Python Docker Image') {
-            steps {
-                sh 'docker pull python:latest'
             }
         }
 
         stage('Run Python Script inside Docker') {
             steps {
                 sh '''
-                    docker run --rm -v "$PWD":/workspace python:latest python /workspace/app.py
-
-
-
+                    docker run --rm \
+                    -v "$WORKSPACE":/workspace \
+                    $DOCKER_IMAGE \
+                    python /workspace/app.py
                 '''
             }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Python script ran successfully!'
+        }
+        failure {
+            echo '❌ Python script failed.'
         }
     }
 }
