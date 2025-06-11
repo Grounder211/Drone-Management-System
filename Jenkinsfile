@@ -18,7 +18,7 @@ pipeline {
                     docker run --rm \
     -v "$PWD":/workspace \
     $DOCKER_IMAGE \
-    python /workspace/app.py
+    python app.py
 
                 '''
             }
