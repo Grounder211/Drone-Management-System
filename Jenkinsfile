@@ -1,33 +1,38 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.10'
-        }
+    agent any  // Runs on any available Jenkins agent
+
+    environment {
+        DOCKER_IMAGE = 'python:3.10'
     }
+
     stages {
-        stage('Run Python Script') {
+        stage('Pull Python Docker Image') {
             steps {
-                sh 'python main.py'
+                echo 'Pulling Docker image...'
+                sh 'docker pull $DOCKER_IMAGE'
+            }
+        }
+
+        stage('Run Python Script inside Docker') {
+            steps {
+                echo 'Running main.py in Docker container...'
+                sh '''
+                    docker run --rm \
+                    -v "$PWD":/app \
+                    -w /app \
+                    $DOCKER_IMAGE \
+                    python app.py
+                '''
             }
         }
     }
 
-    
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
+    post {
+        success {
+            echo 'Pipeline completed successfully.'
         }
-        stage('Install dependencies') {
-            steps {
-                sh 'pip install -r requirements.txt'
-            }
-        }
-        stage('Run script') {
-            steps {
-                sh 'python app.py'
-            }
+        failure {
+            echo 'Pipeline failed.'
         }
     }
-
-
+}
