@@ -15,8 +15,7 @@ pipeline {
         stage('Install & Run') {
             steps {
                 sh '''
-                    pip install --upgrade pip --user --no-cache-dir
-                    pip install -r requirements.txt --user --no-cache-dir
+                    python -m pip install -r requirements.txt
                     python app.py
                 '''
             }
@@ -28,7 +27,7 @@ pipeline {
             echo '✅ Script ran successfully'
         }
         failure {
-            echo '❌ Script failed'
+            echo '❌ Script failed'§
         }
     }
 }
