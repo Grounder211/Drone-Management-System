@@ -6,26 +6,21 @@ pipeline {
     }
 
     stages {
-        stage('Checkout Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Grounder211/Drone-Management-System.git'
-            }
-        }
-
         stage('Debug: List workspace') {
             steps {
-                sh 'ls -l $WORKSPACE'
+                sh 'ls -l /var/jenkins_home/workspace/jenkins_ci_demo'
             }
         }
-
-        stage('Run Python Script inside Docker') {
+        stage('Installing Requirements') {
             steps {
-                sh '''
-                    docker run --rm \
-                    -v "$WORKSPACE":/workspace \
-                    -w /workspace \
-                    $DOCKER_IMAGE /bin/bash -c "pip install -r requirements.txt && python app.py"
-                '''
+                git branch:'main',url:'https://github.com/Grounder211/Drone-Management-System.git'
+                sh 'pip install -r requirements.txt'
+            }
+        }
+        stage('Run Python Script in Docker') {
+            steps {
+                git branch:'main',url:'https://github.com/Grounder211/Drone-Management-System.git'
+                sh 'python3 app.py'
             }
         }
     }
@@ -38,4 +33,5 @@ pipeline {
             echo '❌ Script failed'
         }
     }
+}
 }
