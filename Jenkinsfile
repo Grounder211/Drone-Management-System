@@ -14,12 +14,8 @@ pipeline {
 
         stage('Run Python Script in Docker') {
             steps {
-                sh '''
-                    docker run --rm \
-                    -v /var/jenkins_home/workspace/jenkins_ci_demo:/workspace \
-                    python:3.10 \
-                    python /workspace/app.py
-                '''
+                git branch:'main',url:'https://github.com/Grounder211/Drone-Management-System.git'
+                sh 'python app.py'
             }
         }
     }
