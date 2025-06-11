@@ -5,6 +5,14 @@ pipeline {
         }
     }
     stages {
+        stage('Run Python Script') {
+            steps {
+                sh 'python main.py'
+            }
+        }
+    }
+
+    
         stage('Checkout') {
             steps {
                 checkout scm
@@ -21,5 +29,5 @@ pipeline {
             }
         }
     }
-}
+
 
