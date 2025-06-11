@@ -2,15 +2,15 @@ pipeline {
     agent any
 
 
+   
+    
     stages {
+
         stage('Check file') {
             steps {
                 sh 'ls -l $WORKSPACE'
             }
         }
-    }
-    
-    stages {
         stage('Pull Python Docker Image') {
             steps {
                 sh 'docker pull python:latest'
