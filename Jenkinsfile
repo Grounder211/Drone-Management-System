@@ -12,10 +12,8 @@ pipeline {
         stage('Run Python Script inside Docker') {
             steps {
                 sh '''
-                    docker run --rm \
-  -v "$PWD":/workspace \
-  python:latest \
-  python /workspace/app.py
+                    docker run --rm -v "$PWD":/workspace python:latest python /workspace/app.py
+
 
 
                 '''
