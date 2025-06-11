@@ -6,6 +6,13 @@ pipeline {
     }
 
     stages {
+
+        stage('Install') {
+        steps {
+            git branch: 'main', url: 'https://github.com/Grounder211/Drone-Management-System.git'
+            sh 'pip install --upgrade pip'
+        }
+    }
         stage('Checkout Code') {
             steps {
                 git branch: 'main', url: 'https://github.com/Grounder211/Drone-Management-System.git'
