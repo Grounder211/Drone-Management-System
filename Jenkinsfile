@@ -16,10 +16,10 @@ pipeline {
             steps {
                 sh '''
                     docker run --rm \
-                    -v "$PWD":/app \
-                    -w /app \
-                    $DOCKER_IMAGE \
-                    python app.py
+    -v "$PWD":/workspace \
+    $DOCKER_IMAGE \
+    python /workspace/app.py
+
                 '''
             }
         }
