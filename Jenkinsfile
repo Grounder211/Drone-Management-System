@@ -6,18 +6,18 @@ pipeline {
     }
 
     stages {
-        stage('Verify workspace contents') {
+        stage('Debug: List workspace') {
             steps {
-                sh 'ls -l $WORKSPACE'
+                sh 'ls -l /var/jenkins_home/workspace/jenkins_ci_demo'
             }
         }
 
-        stage('Run Python Script inside Docker') {
+        stage('Run Python Script in Docker') {
             steps {
                 sh '''
                     docker run --rm \
-                    -v "$WORKSPACE":/workspace \
-                    $DOCKER_IMAGE \
+                    -v /var/jenkins_home/workspace/jenkins_ci_demo:/workspace \
+                    python:3.10 \
                     python /workspace/app.py
                 '''
             }
@@ -26,10 +26,10 @@ pipeline {
 
     post {
         success {
-            echo '✅ Python script ran successfully!'
+            echo '✅ Script ran successfully'
         }
         failure {
-            echo '❌ Python script failed.'
+            echo '❌ Script failed'
         }
     }
 }
