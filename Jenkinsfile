@@ -1,7 +1,9 @@
 pipeline {
     agent any
 
-    
+    environment {
+        DOCKER_IMAGE = 'python:3.10'
+    }
 
     stages {
         stage('Pull Python Docker Image') {
