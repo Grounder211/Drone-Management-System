@@ -3,6 +3,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE = 'python:3.10'
+        args '-v $WORKSPACE:/workspace -w /workspace'
     }
 
     stages {
