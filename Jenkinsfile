@@ -6,13 +6,6 @@ pipeline {
     }
 
     stages {
-
-        stage('Install') {
-        steps {
-            git branch: 'main', url: 'https://github.com/Grounder211/Drone-Management-System.git'
-            sh 'pip install --upgrade pip'
-        }
-    }
         stage('Checkout Code') {
             steps {
                 git branch: 'main', url: 'https://github.com/Grounder211/Drone-Management-System.git'
@@ -21,18 +14,21 @@ pipeline {
 
         stage('Install & Run') {
             steps {
-                sh 'pip install -r requirements.txt'
-                sh 'python app.py'
+                sh '''
+                    pip install --upgrade pip --user --no-cache-dir
+                    pip install -r requirements.txt --user --no-cache-dir
+                    python app.py
+                '''
             }
         }
     }
 
     post {
         success {
-            echo '✅ Done!'
+            echo '✅ Script ran successfully'
         }
         failure {
-            echo '❌ Something went wrong.'
+            echo '❌ Script failed'
         }
     }
 }
