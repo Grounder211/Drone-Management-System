@@ -11,6 +11,11 @@ pipeline {
                 sh 'ls -l /var/jenkins_home/workspace/jenkins_ci_demo'
             }
         }
+        stage('Installing Requirements') {
+            steps {
+                
+                sh 'pip install -r requirements.txt'
+            }
 
         stage('Run Python Script in Docker') {
             steps {
