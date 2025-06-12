@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
-                git 'https://github.com/Grounder211/Drone-Management-System.git'
+                git branch: 'main', url: 'https://github.com/Grounder211/Drone-Management-System.git'
+
             }
         }
 
