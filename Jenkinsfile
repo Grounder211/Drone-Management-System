@@ -2,10 +2,9 @@ pipeline {
     agent {
         docker {
             image 'python:3.10'
-            image 'paketobuildpacks/pip'
-        }
+      }
+      
     }
-
     stages {
         stage('Checkout Code') {
             steps {
@@ -13,15 +12,20 @@ pipeline {
             }
         }
 
-        stage('Install & Run') {
+
+        stage('Install') {
             steps {
-                sh '''
-                    python -m pip install -r requirements.txt
-                    python app.py
-                '''
+		sh 'pip install --upgrade pip'
+                sh 'python -m pip install -r requirements.txt'
+                    
+            }
+}
+stage('Run ') {
+            steps {
+                sh 'python app.py'
             }
         }
-    }
+}
 
     post {
         success {
