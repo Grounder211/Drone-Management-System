@@ -1,28 +1,31 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.10'
-        }
-    }
+    agent any
+
     stages {
-        stage('Install') {
+        stage('Clone') {
             steps {
-                sh 'python -m venv venv'
-                sh './venv/bin/pip install -r requirements.txt'
+                git 'https://github.com/Grounder211/Drone-Management-System.git'
             }
         }
-        stage('Run') {
+
+        stage('Set Up Environment') {
             steps {
-                sh './venv/bin/python app.py'
+                sh '''
+                    python3 -m venv venv
+                    source venv/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                '''
             }
         }
-    }
-    post {
-        success {
-            echo '✅ Script ran successfully'
-        }
-        failure {
-            echo '❌ Script failed'
+
+        stage('Run Python Script') {
+            steps {
+                sh '''
+                    source venv/bin/activate
+                    python3 app.py
+                '''
+            }
         }
     }
 }
