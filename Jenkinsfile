@@ -1,24 +1,14 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout Code') {
-            steps {
-                git branch: 'main', url: 'https://github.com/Grounder211/Drone-Management-System.git'
-            }
-        }
         stage('Install') {
             steps {
-                sh 'docker inspect -f . python:latest'
-                sh 'docker pull python:latest'
-
-                sh 'pip install --upgrade pip'
-                echo 'successfully installed pip- '
-                sh 'python -m pip install -r requirements.txt'
+                sh 'python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt'
             }
         }
         stage('Run') {
             steps {
-                sh 'python app.py'
+                sh 'source venv/bin/activate && python app.py'
             }
         }
     }
@@ -28,9 +18,6 @@ pipeline {
         }
         failure {
             echo '❌ Script failed'
-            // Print workspace contents to debug
-            sh 'ls -l'
-            // Print last few lines of logs or relevant files if needed
         }
     }
 }
