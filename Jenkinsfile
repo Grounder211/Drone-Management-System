@@ -32,7 +32,7 @@ stage('Run ') {
             echo '✅ Script ran successfully'
         }
         failure {
-            echo '❌ Script failed'§
+            echo '❌ Script failed'
         }
     }
 }
