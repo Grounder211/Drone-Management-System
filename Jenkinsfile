@@ -1,8 +1,6 @@
 pipeline {
     agent {
-        docker {
-            image 'python:latest'
-        }
+        any
     }
     stages {
         stage('Checkout Code') {
@@ -12,6 +10,9 @@ pipeline {
         }
         stage('Install') {
             steps {
+                sh 'docker inspect -f . python:latest'
+                sh 'docker pull python:latest'
+
                 sh 'pip install --upgrade pip'
                 echo 'successfully installed pip- '
                 sh 'python -m pip install -r requirements.txt'
