@@ -1,14 +1,19 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.10'
+        }
+    }
     stages {
         stage('Install') {
             steps {
-                sh 'python3 -m venv venv && source venv/bin/activate && pip install -r requirements.txt'
+                sh 'python -m venv venv'
+                sh './venv/bin/pip install -r requirements.txt'
             }
         }
         stage('Run') {
             steps {
-                sh 'source venv/bin/activate && python app.py'
+                sh './venv/bin/python app.py'
             }
         }
     }
