@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'python:3.10'
-      }
+        }
       
     }
     stages {
@@ -15,17 +15,17 @@ pipeline {
 
         stage('Install') {
             steps {
-		sh 'pip install --upgrade pip'
+		        sh 'pip install --upgrade pip'
                 sh 'python -m pip install -r requirements.txt'
                     
             }
-}
-stage('Run ') {
+        }
+        stage('Run ') {
             steps {
                 sh 'python app.py'
             }
         }
-}
+    }
 
     post {
         success {
