@@ -8,18 +8,21 @@ pipeline {
             }
         }
 
-        stage('Verify Files') {
+        stage('Show Workspace Files') {
             steps {
-                sh 'ls -la'
+                echo "Jenkins Workspace Path: ${env.WORKSPACE}"
+                sh "ls -la ${env.WORKSPACE}"
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Install Requirements') {
             steps {
+                echo "Installing dependencies from requirements.txt"
                 sh """
                     docker run --rm \
-                    -v "${WORKSPACE}:/app" \
-                    -w /app python:3.11 \
+                    -v "${env.WORKSPACE}:/app" \
+                    -w /app \
+                    python:3.11 \
                     /bin/bash -c "ls -la && cat requirements.txt && pip install -r requirements.txt"
                 """
             }
@@ -27,11 +30,13 @@ pipeline {
 
         stage('Run Python App') {
             steps {
+                echo "Running the Python application"
                 sh """
                     docker run --rm \
-                    -v "${WORKSPACE}:/app" \
-                    -w /app python:3.11 \
-                    /bin/bash -c "python app.py"
+                    -v "${env.WORKSPACE}:/app" \
+                    -w /app \
+                    python:3.11 \
+                    python app.py
                 """
             }
         }
