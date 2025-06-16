@@ -11,15 +11,6 @@ pipeline {
             }
         }
 
-        stage('Set Up Environment') {
-            steps {
-                sh '''
-                    pip install --upgrade pip
-                    pip install -r requirements.txt
-                '''
-            }
-        }
-
         stage('Run Python Script') {
             steps {
                 sh '''
