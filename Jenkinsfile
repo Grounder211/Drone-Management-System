@@ -20,7 +20,7 @@ pipeline {
 
         stage('Run Python Script') {
             steps {
-                sh 'python3 app.py'  // Update path if necessary
+                sh 'python3 app.py'
             }
         }
     }
