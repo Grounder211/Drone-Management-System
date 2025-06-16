@@ -33,10 +33,11 @@ pipeline {
                 echo "Running the Python application"
                 sh """
                     docker run --rm \
-                    -v "${env.WORKSPACE}:/app" \
-                    -w /app \
-                    python:3.11 \
-                    python app.py
+  -v /home/neeraj/jenkins_home/workspace/jenkins_ci_demo:/app \
+  -w /app \
+  python:3.11 \
+  /bin/bash -c "pip install -r requirements.txt && python app.py"
+
                 """
             }
         }
