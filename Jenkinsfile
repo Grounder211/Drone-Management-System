@@ -1,11 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.9'
-		
-        }
-    }
-
+    agent any
     stages {
         stage('Clone') {
             steps {
@@ -13,17 +7,16 @@ pipeline {
 		
             }
         }
-
-        stage('Debug: List files') {
+	
+	 stage('Run App in Container') {
             steps {
-                sh 'ls -R'
+                sh '''
+                docker run --rm -v "$PWD":/app -w /app python:3.11 \
+                  /bin/bash -c "pip install -r requirements.txt && python app.py"
+                '''
             }
         }
 
-        stage('Run Python Script') {
-            steps {
-                sh 'python3 app.py'
-            }
-        }
+        
     }
 }
