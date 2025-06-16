@@ -16,25 +16,23 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                script {
-                    def workspace = env.WORKSPACE
-                    sh """
-                        docker run --rm -v ${workspace}:/app -w /app python:3.11 \
-                        /bin/bash -c "pip install -r requirements.txt"
-                    """
-                }
+                sh """
+                    docker run --rm \
+                    -v "${WORKSPACE}:/app" \
+                    -w /app python:3.11 \
+                    /bin/bash -c "ls -la && cat requirements.txt && pip install -r requirements.txt"
+                """
             }
         }
 
         stage('Run Python App') {
             steps {
-                script {
-                    def workspace = env.WORKSPACE
-                    sh """
-                        docker run --rm -v ${workspace}:/app -w /app python:3.11 \
-                        /bin/bash -c "python app.py"
-                    """
-                }
+                sh """
+                    docker run --rm \
+                    -v "${WORKSPACE}:/app" \
+                    -w /app python:3.11 \
+                    /bin/bash -c "python app.py"
+                """
             }
         }
     }
