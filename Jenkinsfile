@@ -11,6 +11,7 @@ pipeline {
 	stage('Check files') {
   steps {
     sh 'ls -l'
+	echo '$PWD'
   }
 }	
 	
