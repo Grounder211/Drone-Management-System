@@ -10,7 +10,7 @@ pipeline {
         stage('Clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/Grounder211/Drone-Management-System.git'
-		sh 'python --version
+		
             }
         }
 
