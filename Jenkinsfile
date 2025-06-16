@@ -8,6 +8,12 @@ pipeline {
             }
         }
 	
+	stage('Check files') {
+  steps {
+    sh 'ls -l'
+  }
+}	
+	
 	 stage('Run App in Container') {
             steps {
                 sh '''
