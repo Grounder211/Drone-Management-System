@@ -1,7 +1,9 @@
 pipeline {
-    agent docker {
+    agent {
+	docker {
             image 'python:3.9'
         }
+	}
 
     stages {
         stage('Clone') {
