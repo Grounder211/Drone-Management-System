@@ -15,11 +15,12 @@ pipeline {
         }
 
         stage('Run Python app') {
-            steps {
-                sh '''
-                    docker run --rm -v $PWD:/app -w /app python:3.11 /bin/bash -c "pip install -r requirements.txt && python app.py"
-                '''
-            }
+    steps {
+        sh '''
+            docker run --rm -v $PWD:/app -w /app python:3.11 /bin/bash -c "pip install -r requirements.txt && python app.py"
+        '''
         }
-    }
+        }
 }
+
+    }
