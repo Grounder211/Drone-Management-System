@@ -1,21 +1,26 @@
 pipeline {
     agent {
-	docker {
+        docker {
             image 'python:3.9'
         }
-	}
+    }
 
     stages {
         stage('Clone') {
             steps {
                 git branch: 'main', url: 'https://github.com/Grounder211/Drone-Management-System.git'
+            }
+        }
 
+        stage('Debug: List files') {
+            steps {
+                sh 'ls -R'
             }
         }
 
         stage('Run Python Script') {
             steps {
-                sh 'python3 app.py'
+                sh 'python3 app.py'  // Update path if necessary
             }
         }
     }
