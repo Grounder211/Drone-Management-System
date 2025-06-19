@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Run App in Docker') {
+        stage('Run App in Dockerr') {
             steps {
                 sh 'docker run --rm drone-app'
             }
