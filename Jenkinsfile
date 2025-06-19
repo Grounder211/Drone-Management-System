@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the latest code from the repoq
+                // Checkout the latest code from the repoqq
                 git url: 'https://github.com/Grounder211/Drone-Management-System.git', branch: 'main'
             }
         }
