@@ -93,9 +93,8 @@ def recommend_drone(port_name, min_flight_radius=0, min_battery_life=0, min_payl
         recommendations = ranked_drones[['drone_name', 'performance_score']].to_dict(orient='records')
 
     return recommendations
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8081, debug=False)
+    app.run(debug=True, port=8001)
 
 
 
