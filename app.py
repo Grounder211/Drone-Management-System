@@ -95,5 +95,5 @@ def recommend_drone(port_name, min_flight_radius=0, min_battery_life=0, min_payl
     return recommendations
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True)
 
