@@ -29,16 +29,16 @@ pipeline {
         
         stage('Install Requirements') {
     steps {
-        echo "Installing dependencies from requirements.txt"
-        sh """
+        sh '''
           docker run --rm \
-          -v ${env.WORKSPACE}:/app \
+          -v "$PWD:/app" \
           -w /app \
           python:3.11 \
           pip install -r requirements.txt
-        """
+        '''
     }
 }
+
 
 
         stage('Run Python App') {
