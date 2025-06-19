@@ -19,6 +19,14 @@ pipeline {
             }
         }
 
+        stage('Check Workspace') {
+  steps {
+    sh 'pwd'
+    sh 'ls -la'
+  }
+}
+
+        
         stage('Install Requirements') {
             steps {
                 echo "Installing dependencies from requirements.txt"
