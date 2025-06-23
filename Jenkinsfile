@@ -3,7 +3,6 @@ pipeline {
 
   environment {
     SERVER_SCRIPT = "C:\\Users\\ebalnee\\OneDrive - Ericsson\\Desktop\\test\\Drone-Management-System\\start_server.bat"
-
   }
 
   stages {
@@ -16,13 +15,13 @@ pipeline {
     stage('Start Local Server') {
       steps {
         echo "Launching local HTTP server..."
-        bat "${env.SERVER_SCRIPT}"
+        bat "\"${env.SERVER_SCRIPT}\""
       }
     }
 
     stage('Wait/Health Check') {
       steps {
-        echo "Checkihng if server is listening on port 8000..."
+        echo "Checking if server is listening on port 8000..."
         bat 'curl http://localhost:8000'
       }
     }
