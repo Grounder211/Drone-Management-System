@@ -1,35 +1,31 @@
 pipeline {
     agent any
 
-    triggers {
-        // Automatically trigger build on GitHub push
-        githubPush()
-    }
-
-    environment {
-        DOCKER_IMAGE = 'python:3.11'
-        CONTAINER_WORKDIR = '/app'
-    }
-
     stages {
         stage('Checkout') {
             steps {
+                // Checkout the latest code from the repo
                 git url: 'https://github.com/Grounder211/Drone-Management-System.git', branch: 'main'
             }
         }
 
-        stage('Build Docker Image') {
+        stage('Install Requirements') {
             steps {
-                sh 'docker build -t drone-app .'
+                echo "Installing dependencies from requirements.txt"
+                sh """
+                    pip install -r requirements.txt
+
+                """
             }
         }
 
-        stage('Run App in Dockerr') {
+        stage('Run Python App') {
             steps {
-                sh 'docker run --rm drone-app'
+                echo "Running the Python application"
+                sh """
+                    python app.py"
+                """
             }
         }
     }
 }
-
-
