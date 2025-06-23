@@ -8,6 +8,16 @@ pipeline {
             }
         }
 
+
+        stage('Debug') {
+    steps {
+        bat 'echo %PATH%'
+        bat 'where python'
+        bat 'where pip'
+    }
+}
+
+
         stage('Install Requirements') {
             steps {
                 echo "Installing dependencies from requirements.txt"
