@@ -2,7 +2,8 @@ pipeline {
   agent any
 
   environment {
-    SERVER_SCRIPT = "C:\Users\ebalnee\OneDrive - Ericsson\Desktop\test\Drone-Management-System\start_server.bat"
+    SERVER_SCRIPT = "C:\\Users\\ebalnee\\OneDrive - Ericsson\\Desktop\\test\\Drone-Management-System\\start_server.bat"
+
   }
 
   stages {
