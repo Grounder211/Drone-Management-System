@@ -4,7 +4,7 @@ REM Server URL (change IP or hostname as needed)
 set SERVER_URL=http://localhost:8000
 
 REM File to download from the server
-set FILE_NAME=a.zip
+set FILE_NAME=modified.zip
 
 REM Where to save downloaded files
 set DOWNLOAD_DIR=C:\\Users\\ebalnee\\OneDrive - Ericsson\\Desktop\\test
