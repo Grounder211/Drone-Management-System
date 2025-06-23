@@ -1,0 +1,3 @@
+@echo off
+echo Starting HTTP Server on port 8000...
+python -m http.server 8000 --directory "C:\Users\ebalnee\OneDrive - Ericsson\Desktop\test\Drone-Management-System"
