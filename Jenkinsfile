@@ -9,26 +9,19 @@ pipeline {
         }
 
 
-        stage('Debug') {
-    steps {
-        bat 'echo %PATH%'
-        bat 'where python'
-        bat 'where pip'
-    }
-}
-
-
-        stage('Install Requirements') {
+             stage('Install Requirements') {
             steps {
                 echo "Installing dependencies from requirements.txt"
-                bat 'python -m pip install -r requirements.txt'
+                bat '"C:\\Users\\ebalnee\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m pip install -r requirements.txt'
+
             }
         }
 
         stage('Run Python App') {
             steps {
                 echo "Running the Python application"
-                bat 'python app.py'
+               bat '"C:\\Users\\ebalnee\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" app.py'
+
             }
         }
     }
