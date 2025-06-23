@@ -22,7 +22,7 @@ pipeline {
 
     stage('Wait/Health Check') {
       steps {
-        echo "Checking if server is listening on port 8000..."
+        echo "Checkihng if server is listening on port 8000..."
         bat 'curl http://localhost:8000'
       }
     }
