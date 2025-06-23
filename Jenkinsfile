@@ -12,19 +12,14 @@ pipeline {
         stage('Install Requirements') {
             steps {
                 echo "Installing dependencies from requirements.txt"
-                sh """
-                    pip install -r requirements.txt
-
-                """
+                sh 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Python App') {
             steps {
                 echo "Running the Python application"
-                sh """
-                    python app.py"
-                """
+                sh 'python app.py'
             }
         }
     }
